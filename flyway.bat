@@ -1,4 +1,4 @@
-CF_APP="cf-spring"
+set env CF_APP="cf-spring"
 
 dburl=$(cf env "${CF_APP}" | awk '/System-Provided:/{flag=1;next}/^$/{flag=0}flag' | jq -r '.VCAP_SERVICES."dashDB For Transactions"[0].credentials.jdbcurl')
 dbusername=$(cf env "${CF_APP}" | awk '/System-Provided:/{flag=1;next}/^$/{flag=0}flag' | jq -r '.VCAP_SERVICES."dashDB For Transactions"[0].credentials.username')
